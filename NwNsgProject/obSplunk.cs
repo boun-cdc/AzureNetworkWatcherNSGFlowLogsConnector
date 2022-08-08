@@ -53,6 +53,7 @@ namespace nsgFunc
                     req.Headers.Accept.Clear();
                     req.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     req.Headers.Add("Authorization", "Splunk " + splunkToken);
+                    req.Headers.Add("X-Splunk-Request-Channel", "13e5e312-d2a2-48d8-8964-3bc1ee48816a");
                     req.Content = new StringContent(transmission, Encoding.UTF8, "application/json");
                     HttpResponseMessage response = await SingleHttpClientInstance.SendToSplunk(req);
                     if (response.StatusCode != HttpStatusCode.OK)
